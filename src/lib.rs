@@ -1,12 +1,19 @@
 mod util;
+mod life;
+
 use util::{Point, util::println};
 use wasm_bindgen::prelude::*;
 
 // If you don't want to use `wee_alloc`, you can safely delete this.
-#[cfg(feature = "wee_alloc")]
-#[global_allocator]
-static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
+// #[cfg(feature = "wee_alloc")]
+// #[global_allocator]
+// static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
 
+
+#[wasm_bindgen]
+extern {
+    fn alert(s: &str);
+}
 
 // This is like the `main` function, except for JavaScript.
 #[wasm_bindgen(start)]
@@ -27,6 +34,8 @@ pub fn main_js() -> Result<(), JsValue> {
     println(format!("point 1: {:?}", p1).as_str()); 
     println(format!("point 2: {:?}", p2).as_str()); 
     println(format!("point 3: {:?}", p3).as_str()); 
+
+    // alert("Hello, henkiepenkie!");
 
     Ok(())
 }

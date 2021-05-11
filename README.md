@@ -46,3 +46,28 @@ npm test -- --safari
 * The `static` folder contains any files that you want copied as-is into the final build. It contains an `index.html` file which loads the `index.js` file.
 
 * The `tests` folder contains your Rust unit tests.
+
+
+
+
+## WHAT I DID DIFFERENTLY
+- use rust-analyzer rather than normal rust analyzer.
+  - using vscode, so just installed it as a plugin.
+- changed some of its settings: 
+    ```
+    "rust-analyzer.diagnostics.disabled": [
+        "missing-unsafe",
+    ],
+    "rust-analyzer.diagnostics.warningsAsInfo": [
+        "dead_code",
+        "unused_imports",
+    ],
+
+    "rust-analyzer.inlayHints.parameterHints": false,
+    "rust-analyzer.inlayHints.typeHints": false,
+    "rust-analyzer.runnables.overrideCargo": null,
+    "rust-analyzer.cargo.target": null
+    ```
+    - I was getting errors & warnings, which the rustc didnt seem to care about, so i disabled them, based on forum recommendations.
+    - Only weird quirck remaining: why does it only check at save, not in real-time?
+    
